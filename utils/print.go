@@ -2,6 +2,6 @@ package utils
 
 import "log"
 
-func Print(v ...any) {
+func Log(v ...any) {
 	log.Default().Print(v...)
 }

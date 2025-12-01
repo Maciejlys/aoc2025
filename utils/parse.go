@@ -5,8 +5,12 @@ import (
 	"strings"
 )
 
+func Lines(fileContent string) []string {
+	return strings.Split(strings.TrimRight(fileContent, "\n"), "\n")
+}
+
 func Parse(fileContent string, separator string) [][]string {
-	lines := strings.Split(strings.TrimRight(fileContent, "\n"), "\n")
+	lines := Lines(fileContent)
 	result := make([][]string, 0)
 
 	for _, line := range lines {
