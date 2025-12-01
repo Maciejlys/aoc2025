@@ -35,7 +35,7 @@ func TestSet(t *testing.T) {
 func TestQueue(t *testing.T) {
 	q := NewQueue[int]()
 	
-	if !q.IsEmpty() {
+	if q.IsEmpty() == false {
 		t.Error("New queue should be empty")
 	}
 	
@@ -65,7 +65,7 @@ func TestQueue(t *testing.T) {
 func TestStack(t *testing.T) {
 	s := NewStack[int]()
 	
-	if !s.IsEmpty() {
+	if s.IsEmpty() == false {
 		t.Error("New stack should be empty")
 	}
 	
