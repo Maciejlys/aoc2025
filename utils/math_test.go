@@ -11,7 +11,7 @@ func TestAbs(t *testing.T) {
 		{-5, 5},
 		{0, 0},
 	}
-	
+
 	for _, tt := range tests {
 		result := Abs(tt.input)
 		if result != tt.expected {
@@ -29,7 +29,7 @@ func TestMin(t *testing.T) {
 		{5, 3, 3},
 		{-1, -5, -5},
 	}
-	
+
 	for _, tt := range tests {
 		result := Min(tt.a, tt.b)
 		if result != tt.expected {
@@ -47,7 +47,7 @@ func TestMax(t *testing.T) {
 		{5, 3, 5},
 		{-1, -5, -1},
 	}
-	
+
 	for _, tt := range tests {
 		result := Max(tt.a, tt.b)
 		if result != tt.expected {
@@ -66,7 +66,7 @@ func TestSum(t *testing.T) {
 		{[]int{}, 0},
 		{[]int{10}, 10},
 	}
-	
+
 	for _, tt := range tests {
 		result := Sum(tt.input)
 		if result != tt.expected {
@@ -85,7 +85,7 @@ func TestProduct(t *testing.T) {
 		{[]int{}, 0},
 		{[]int{10}, 10},
 	}
-	
+
 	for _, tt := range tests {
 		result := Product(tt.input)
 		if result != tt.expected {
@@ -103,7 +103,7 @@ func TestGCD(t *testing.T) {
 		{15, 5, 5},
 		{7, 13, 1},
 	}
-	
+
 	for _, tt := range tests {
 		result := GCD(tt.a, tt.b)
 		if result != tt.expected {
@@ -121,7 +121,7 @@ func TestLCM(t *testing.T) {
 		{15, 5, 15},
 		{7, 13, 91},
 	}
-	
+
 	for _, tt := range tests {
 		result := LCM(tt.a, tt.b)
 		if result != tt.expected {

@@ -6,9 +6,8 @@ This repository contains my solutions for [Advent of Code 2025](https://adventof
 
 ```
 .
-├── main.go              # Main runner for all solutions
-├── utils/               # Common utilities and helpers
-│   ├── input.go        # File reading and parsing utilities
+├── utils/              # Common utilities and helpers
+│   ├── parse.go        # Parsing utilities
 │   ├── math.go         # Mathematical helper functions
 │   ├── grid.go         # 2D grid and point utilities
 │   └── collections.go  # Data structures (Set, Queue, Stack)
@@ -24,7 +23,7 @@ This repository contains my solutions for [Advent of Code 2025](https://adventof
 
 ### Prerequisites
 
-- Go 1.21 or later
+- Go 1.25.4 or later
 
 ### Installation
 
@@ -37,16 +36,6 @@ cd aoc2025
 2. Download your puzzle input from [Advent of Code](https://adventofcode.com/2025) and save it to the appropriate day folder (e.g., `day01/input.txt`)
 
 ### Running Solutions
-
-Run a specific day:
-```bash
-go run main.go -day 1
-```
-
-Run with a custom input file:
-```bash
-go run main.go -day 1 -input path/to/input.txt
-```
 
 Build the binary:
 ```bash
@@ -74,13 +63,6 @@ go test -v ./...
 ## Utils Package
 
 The `utils` package provides commonly used functions for Advent of Code:
-
-### File I/O
-- `ReadLines(filepath)` - Read file as slice of strings
-- `ReadFile(filepath)` - Read entire file as string
-- `ReadInts(filepath)` - Read file as slice of integers
-- `SplitByEmptyLines(lines)` - Split input into groups by empty lines
-- `ParseIntList(s, separator)` - Parse comma/space-separated integers
 
 ### Math
 - `Abs(x)` - Absolute value
@@ -112,23 +94,16 @@ To add a solution for a new day (e.g., day 2):
 mkdir day02
 ```
 
-2. Copy the template files from day01:
+2. Copy the template files from template day01:
 ```bash
-cp day01/day01.go day02/day02.go
-cp day01/day01_test.go day02/day02_test.go
+cp template/day0/solution.go day02/solution.go
+cp template/day0/solution_test.go day02/solution_test.go
 cp day01/README.md day02/README.md
-cp day01/input.txt.example day02/input.txt.example
 ```
 
 3. Update package names and imports in the copied files
 
-4. Add the case to `main.go`:
-```go
-case 2:
-    day02.Run(inputPath)
-```
-
-5. Download your input to `day02/input.txt` and start solving!
+4. Download your input to `day02/input.txt` and start solving!
 
 ## License
 
