@@ -23,47 +23,43 @@ func (d *Dial) Move(steps int, direction string) {
 		d.Position = newPos % d.Range
 	case "L":
 		newPos := d.Position - steps
-		if newPos <= 0 {
-			d.MethodPassword += (utils.Abs(newPos) + d.Range) / d.Range
 
+		if newPos < 0 {
 			if d.Position == 0 {
-				d.MethodPassword--
+				d.MethodPassword += utils.Abs(newPos) / d.Range
+			} else {
+				remainingSteps := utils.Abs(newPos)
+				d.MethodPassword += (remainingSteps / d.Range) + 1
 			}
+		} else if newPos == 0 && d.Position > 0 {
+			d.MethodPassword += 1
 		}
-		d.Position = (newPos + d.Range) % d.Range
-	}
 
-	utils.Log("Dial is rotated ", steps, " steps to the ", direction, " and now is at position ", d.Position, " Method password is ", d.MethodPassword)
+		d.Position = ((newPos % d.Range) + d.Range) % d.Range
+	}
 
 	if d.Position == 0 {
 		d.Password++
 	}
 }
 
-func Part1(input string) int {
-	dial := Dial{50, 100, 0, 0}
+func moveDial(dial *Dial, input string) {
 	for _, rotation := range utils.Lines(input) {
 		var direction string
 		var steps int
 		fmt.Sscanf(rotation, "%1s%d", &direction, &steps)
 		dial.Move(steps, direction)
 	}
+}
+
+func Part1(input string) int {
+	dial := Dial{50, 100, 0, 0}
+	moveDial(&dial, input)
 	return dial.Password
 }
 
 func Part2(input string, startPos int) int {
 	dial := Dial{startPos, 100, 0, 0}
-
-	utils.Log("Dial starts at ", dial.Position)
-
-	for _, rotation := range utils.Lines(input) {
-		var direction string
-		var steps int
-		fmt.Sscanf(rotation, "%1s%d", &direction, &steps)
-		dial.Move(steps, direction)
-	}
-
-	utils.Log("Dial ends at ", dial.Position)
-
+	moveDial(&dial, input)
 	return dial.MethodPassword
 }
