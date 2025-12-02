@@ -2,7 +2,9 @@ package day0
 
 import (
 	_ "embed"
+	"fmt"
 	"testing"
+	"time"
 )
 
 //go:embed example.txt
@@ -63,3 +65,15 @@ func Test_part1(t *testing.T) {
 // 	}
 // }
 //
+
+// func BenchmarkPart1(b *testing.B) {
+// 	for b.Loop() {
+// 		Part1(input)
+// 	}
+// }
+//
+// func BenchmarkPart2(b *testing.B) {
+// 	for b.Loop() {
+// 		Part2(input)
+// 	}
+// }

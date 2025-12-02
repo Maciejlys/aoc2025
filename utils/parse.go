@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+func LinesWithSeparator(fileContent string, separator string) []string {
+	return strings.Split(strings.TrimRight(fileContent, "\n"), separator)
+}
+
 func Lines(fileContent string) []string {
 	return strings.Split(strings.TrimRight(fileContent, "\n"), "\n")
 }
