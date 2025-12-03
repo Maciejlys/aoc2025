@@ -1,4 +1,4 @@
-package day0
+package day03
 
 import (
 	_ "embed"
@@ -20,13 +20,13 @@ func Test_part1(t *testing.T) {
 		{
 			name:  "example",
 			input: example,
-			want:  0,
+			want:  357,
 		},
-		// {
-		// 	name:  "input",
-		// 	input: input,
-		// 	want:  0,
-		// },
+		{
+			name:  "input",
+			input: input,
+			want:  17196,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -37,32 +37,31 @@ func Test_part1(t *testing.T) {
 	}
 }
 
-// func Test_part2(t *testing.T) {
-// 	tests := []struct {
-// 		name  string
-// 		input string
-// 		want  int
-// 	}{
-// 		{
-// 			name:  "example",
-// 			input: example,
-// 			want:  0,
-// 		},
-//// 		{
-//// 			name:  "input",
-////			input: input,
-////			want:  0,
-//// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := Part2(tt.input); got != tt.want {
-// 				t.Errorf("part2() = %v, want %v", got, tt.want)
-// 			}
-// 		})
-// 	}
-// }
-//
+func Test_part2(t *testing.T) {
+	tests := []struct {
+		name  string
+		input string
+		want  int
+	}{
+		{
+			name:  "example",
+			input: example,
+			want:  3121910778619,
+		},
+		{
+			name:  "input",
+			input: input,
+			want:  171039099596062,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Part2(tt.input); got != tt.want {
+				t.Errorf("part2() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
 
 // func BenchmarkPart1(b *testing.B) {
 // 	for b.Loop() {

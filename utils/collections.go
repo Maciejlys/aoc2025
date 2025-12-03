@@ -84,6 +84,16 @@ func NewStack[T any]() *Stack[T] {
 	return &Stack[T]{items: make([]T, 0)}
 }
 
+// Top returns the top item from the stack without removing it
+func (s *Stack[T]) Top() T {
+	return s.items[len(s.items)-1]
+}
+
+// ToSlice returns all items in the stack as a slice
+func (s *Stack[T]) ToSlice() []T {
+	return s.items
+}
+
 // Push adds an item to the top of the stack
 func (s *Stack[T]) Push(item T) {
 	s.items = append(s.items, item)
