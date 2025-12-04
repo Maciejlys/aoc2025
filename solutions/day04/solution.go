@@ -4,13 +4,13 @@ import (
 	"github.com/Maciejlys/aoc2025/utils"
 )
 
-func getGrid(input string) map[utils.Point]string {
-	grid := make(map[utils.Point]string, 0)
+func getGrid(input string) map[utils.Point]rune {
+	grid := make(map[utils.Point]rune, 0)
 	lines := utils.Lines(input)
 
 	for y, line := range lines {
 		for x, char := range line {
-			grid[utils.Point{X: x, Y: y}] = string(char)
+			grid[utils.Point{X: x, Y: y}] = char
 		}
 	}
 
@@ -25,12 +25,12 @@ func Part1(input string) int {
 		neighbors := point.Neighbors8()
 		counter := 0
 
-		if grid[point] != "@" {
+		if grid[point] != '@' {
 			continue
 		}
 
 		for _, neighbor := range neighbors {
-			if grid[neighbor] == "@" {
+			if grid[neighbor] == '@' {
 				counter++
 			}
 		}
@@ -53,19 +53,19 @@ func Part2(input string) int {
 
 		for !stack.IsEmpty() {
 			point, _ := stack.Pop()
-			grid[point] = "."
+			grid[point] = '.'
 		}
 
 		for point := range grid {
 			neighbors := point.Neighbors8()
 			counter := 0
 
-			if grid[point] != "@" {
+			if grid[point] != '@' {
 				continue
 			}
 
 			for _, neighbor := range neighbors {
-				if grid[neighbor] == "@" {
+				if grid[neighbor] == '@' {
 					counter++
 				}
 			}
