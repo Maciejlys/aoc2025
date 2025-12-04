@@ -6,17 +6,19 @@ This repository contains my solutions for [Advent of Code 2025](https://adventof
 
 ```
 .
-├── utils/              # Common utilities and helpers
-│   ├── parse.go        # Parsing utilities
-│   ├── math.go         # Mathematical helper functions
-│   ├── grid.go         # 2D grid and point utilities
-│   └── collections.go  # Data structures (Set, Queue, Stack)
-├── day01/              # Solution for day 1
-│   ├── day01.go        # Implementation
-│   ├── day01_test.go   # Tests
-│   ├── input.txt       # Puzzle input (gitignored)
-│   └── README.md       # Notes and approach
-└── ...                 # More days
+├── utils/                  # Common utilities and helpers
+│   ├── parse.go            # Parsing utilities
+│   ├── math.go             # Mathematical helper functions
+│   ├── grid.go             # 2D grid and point utilities
+│   └── collections.go      # Data structures (Set, Queue, Stack)
+├── solutions/              # Solutions
+│   ├── day01/              # Solution for day 1
+│   │   ├── day01.go        # Implementation
+│   │   ├── day01_test.go   # Tests
+│   │   ├── example.txt     # Example input
+│   │   └── input.txt       # Puzzle input (gitignored)
+│   └── ...                 # More days
+└── ...                 
 ```
 
 ## Getting Started
