@@ -7,6 +7,7 @@ import (
 	_ "github.com/Maciejlys/aoc2025/solutions/day02"
 	_ "github.com/Maciejlys/aoc2025/solutions/day03"
 	_ "github.com/Maciejlys/aoc2025/solutions/day04"
+	_ "github.com/Maciejlys/aoc2025/solutions/day05"
 	_ "github.com/Maciejlys/aoc2025/template/day0"
 )
 
