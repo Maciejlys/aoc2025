@@ -86,7 +86,7 @@ func reorderNumbers(grid [][]string) map[int][]string {
 	return ordered
 }
 
-func exectureOperations(ordered map[int][]string, operations []string) int {
+func executeOperations(ordered map[int][]string, operations []string) int {
 	sum := 0
 
 	for i, ops := range ordered {
@@ -107,5 +107,5 @@ func Part2(input string) int {
 	operations := extractOperations(grid[len(grid)-1])
 	ordered := reorderNumbers(grid[:len(grid)-1])
 
-	return exectureOperations(ordered, operations)
+	return executeOperations(ordered, operations)
 }
