@@ -43,3 +43,12 @@ func ParseWithInts(fileContent string, separator string) [][]int {
 
 	return result
 }
+
+func StringsToInts(strs []string) []int {
+	ints := make([]int, 0, len(strs))
+	for _, str := range strs {
+		num := Atoi(str)
+		ints = append(ints, num)
+	}
+	return ints
+}
