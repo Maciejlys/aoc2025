@@ -89,13 +89,12 @@ func reorderNumbers(grid [][]string) map[int][]string {
 func executeOperations(ordered map[int][]string, operations []string) int {
 	sum := 0
 
-	for i, ops := range ordered {
+	for i, nums := range ordered {
 		operation := operations[i]
-		converted := utils.StringsToInts(ops)
 		if operation == "+" {
-			sum += utils.Sum(converted)
+			sum += utils.Sum(utils.StringsToInts(nums))
 		} else {
-			sum += utils.Product(converted)
+			sum += utils.Product(utils.StringsToInts(nums))
 		}
 	}
 
