@@ -20,6 +20,21 @@ func (p Point) ManhattanDistance(other Point) int {
 	return Abs(p.X-other.X) + Abs(p.Y-other.Y)
 }
 
+func (p Point) Neighbors2TB() []Point {
+	return []Point{
+		{X: p.X, Y: p.Y - 1}, // up
+		{X: p.X, Y: p.Y + 1}, // down
+	}
+}
+
+// Neighbors4 returns the 4 orthogonal neighbors (up, down, left, right)
+func (p Point) Neighbors2LR() []Point {
+	return []Point{
+		{X: p.X - 1, Y: p.Y}, // left
+		{X: p.X + 1, Y: p.Y}, // right
+	}
+}
+
 // Neighbors4 returns the 4 orthogonal neighbors (up, down, left, right)
 func (p Point) Neighbors4() []Point {
 	return []Point{
