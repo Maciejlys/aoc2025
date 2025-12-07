@@ -59,33 +59,26 @@ type State struct {
 
 func Part2(input string) int {
 	parsed := utils.Parse(input, "")
-	H := len(parsed)
-	W := len(parsed[0])
-
 	grid := make(map[utils.Point]State)
 
 	for y, line := range parsed {
 		for x, r := range line {
 			p := utils.Point{X: x, Y: y}
-			grid[p] = State{position: p, beams: 0, char: r}
+			beams := 0
 			if r == "S" {
-				grid[p] = State{position: p, beams: 1, char: r}
+				beams++
 			}
+			grid[p] = State{position: p, beams: beams, char: r}
 		}
 	}
 
 	sum := 0
 
 	for {
-		nextGrid := make(map[utils.Point]State)
-		for p, state := range grid {
-			nextGrid[p] = State{position: p, char: state.char, beams: 0}
-		}
-
 		hasBeams := false
 
-		for y := range H {
-			for x := range W {
+		for y := range len(parsed) {
+			for x := range len(parsed[0]) {
 				p := utils.Point{X: x, Y: y}
 				state := grid[p]
 
@@ -96,29 +89,24 @@ func Part2(input string) int {
 				hasBeams = true
 				beamsToPropagate := state.beams
 
+				state.beams = 0
+				grid[p] = state
+
 				if state.char == "^" {
 					sum += beamsToPropagate
 
-					left := p.Add(utils.Left)
-					right := p.Add(utils.Right)
-
-					if entry, ok := nextGrid[left]; ok {
-						entry.beams += beamsToPropagate
-						nextGrid[left] = entry
+					for _, neighbor := range p.Neighbors2LR() {
+						if entry, ok := grid[neighbor]; ok {
+							entry.beams += beamsToPropagate
+							grid[neighbor] = entry
+						}
 					}
-
-					if entry, ok := nextGrid[right]; ok {
+				} else {
+					down := p.Add(utils.Down)
+					if entry, ok := grid[down]; ok {
 						entry.beams += beamsToPropagate
-						nextGrid[right] = entry
+						grid[down] = entry
 					}
-
-					continue
-				}
-
-				down := p.Add(utils.Down)
-				if entry, ok := nextGrid[down]; ok {
-					entry.beams += beamsToPropagate
-					nextGrid[down] = entry
 				}
 			}
 		}
@@ -126,8 +114,6 @@ func Part2(input string) int {
 		if !hasBeams {
 			break
 		}
-
-		grid = nextGrid
 	}
 
 	return sum + 1
